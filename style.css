@@ -1,0 +1,65 @@
+body {
+    background-color: #121213;
+}
+
+#header {
+    padding: 150px, 0px, 150px, 0px;
+    height: 120px;
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    border-bottom: 1px;
+    border-color: white;
+}
+
+#gameboard {
+    width: 50%;
+    margin: auto;
+}
+
+#guess {
+    height: 150px;
+    width: 150px;
+    margin: auto;
+    border-radius:10px;
+    border: 2px solid #818384;
+    font-size: 110px;
+    text-align: center;
+    background-color: #121213;
+    color: white;
+}
+
+#keyboard {
+    height: 200px;
+    margin: 15px 8px;
+}
+
+.keyRow {
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    justify-content: center;
+}
+
+.key {
+    border: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    width: 50px;
+    border-radius: 4px;
+    background-color: #818384;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#submitButton {
+    height:50px;
+    width:150px;
+    border-radius:4px;
+    border: none;
+    color: white;
+    background-color: #818384;
+    font-weight: bold;
+}
