@@ -4,7 +4,7 @@ body {
 
 #header {
     padding: 150px, 0px, 150px, 0px;
-    height: 120px;
+    height: 100px;
     text-align: center;
     color: white;
     font-size: xx-large;
@@ -23,7 +23,7 @@ body {
     margin: auto;
     border-radius:10px;
     border: 2px solid #818384;
-    font-size: 110px;
+    font-size: 5vw;
     text-align: center;
     background-color: #121213;
     color: white;
