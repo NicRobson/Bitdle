@@ -23,3 +23,19 @@ function MakeGuess() {
 function PressKey(key) {
     $("#guess").val(key);
 } 
+
+$(document).ready( function() {
+    let isCacheSupported = 'caches' in window;
+    const isTest = 0; // Ensure set to 0 for prod
+
+    if (isCacheSupported) {
+        let cacheName = 'bitdle'; 
+        let url = isTest ? "/bitdle/index.html" : 'https://nicrobson.github.io/Bitdle/';
+
+        caches.open(cacheName).then( cache => {
+            cache.add(url).then( () => {
+                console.log("Data cached ");
+             });
+        });
+    }
+});
