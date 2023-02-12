@@ -11,8 +11,18 @@
         <script src="script.js"></script>
     </head>
     <body>
+        <div id="overlay">
+            <div id="modal">
+                <br />
+                <h1>STATISTICS</h1>
+                <br />
+                <h2>Streak </h2>
+                <h1 id="curr_streak">0</h1>
+                <h3 onclick="ShowStats()" id="close_btn">CLOSE</h3>
+            </div>
+        </div>
         <div id="header">
-            Welcome to Bit-dle, you have one guess to guess the bit!
+            Welcome to Bitdle, you have one guess to guess the bit!
         </div>
         <div id="gameboard">
             <div id="guessDiv" class="row">

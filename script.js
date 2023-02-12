@@ -7,16 +7,38 @@ function MakeGuess() {
     if ( guess !== "1" && guess !== "0" ) {
         $("#guess").val("");
     } else {
-        localStorage.setItem("guess", guess);
+        let streak = localStorage.getItem("streak") ? localStorage.getItem("streak") : 0;
+        let storedGuess = localStorage.getItem("guess");
+        
         $("#submitButton").attr("disabled", "true").css("background-color", "#3a3a3c");
         $(".key").attr("disabled", "true").css("background-color", "#3a3a3c");
-
+        
         if ( guess == theAnswer ) {
             $(`#key_${theAnswer}`).css("background-color", "#538d4e");
             $("#guess").css("background-color", "#538d4e");
+            if (!storedGuess) {
+                localStorage.setItem("streak", parseInt(streak) + 1 );
+            }
         } else {
             $("#guess").css("background-color", "#eb3d3d");
+            localStorage.removeItem("streak");
         }
+        
+        localStorage.setItem("guess", guess);
+        ShowStats();
+    }
+}
+
+function ShowStats() {
+
+    if ($("#overlay").is(":visible")) {
+        $("#overlay").hide();
+    } else {
+        let streak = localStorage.getItem("streak") ? localStorage.getItem("streak") : 0;
+
+        console.log(streak);
+        $("#overlay").show();
+        $("#curr_streak").html(streak);
     }
 }
 
