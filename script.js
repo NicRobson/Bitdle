@@ -1,5 +1,4 @@
-
-const theAnswer = Math.floor( Math.random() * 2 );
+let theAnswer = Math.floor( Math.random() * 2 );
 
 function MakeGuess() {
 
@@ -8,6 +7,7 @@ function MakeGuess() {
     if ( guess !== "1" && guess !== "0" ) {
         $("#guess").val("");
     } else {
+        localStorage.setItem("guess", guess);
         $("#submitButton").attr("disabled", "true").css("background-color", "#3a3a3c");
         $(".key").attr("disabled", "true").css("background-color", "#3a3a3c");
 
@@ -25,17 +25,26 @@ function PressKey(key) {
 } 
 
 $(document).ready( function() {
-    let isCacheSupported = 'caches' in window;
-    const isTest = 0; // Ensure set to 0 for prod
 
-    if (isCacheSupported) {
-        let cacheName = 'bitdle'; 
-        let url = isTest ? "/bitdle/index.html" : 'https://nicrobson.github.io/Bitdle/';
+    let date = localStorage.getItem("date");
+    let today = new Date().toLocaleDateString();
 
-        caches.open(cacheName).then( cache => {
-            cache.add(url).then( () => {
-                console.log("Data cached ");
-             });
-        });
+    if (date == today) {
+        // Update the answer to the previously saved answer
+        theAnswer = localStorage.getItem("answer");
+
+        // Check if we've made a guess today
+        let guess = localStorage.getItem("guess");
+
+        if (guess) {
+            $("#guess").val(guess);
+            MakeGuess();
+        }
+
+    } else {
+        localStorage.removeItem("guess"); // Remove previous days guess...
+        localStorage.setItem("answer", theAnswer);
+        localStorage.setItem("date", today);
     }
+
 });
