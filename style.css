@@ -90,6 +90,11 @@ body {
     border-radius: 4px;
 }
 
+
+#share_btn {
+    position: relative;
+}
+
 #close_btn {
     cursor: pointer;
     position: absolute;

@@ -1,4 +1,5 @@
 let theAnswer = Math.floor( Math.random() * 2 );
+let isCorrect = null;
 
 function MakeGuess() {
 
@@ -14,12 +15,14 @@ function MakeGuess() {
         $(".key").attr("disabled", "true").css("background-color", "#3a3a3c");
         
         if ( guess == theAnswer ) {
+            isCorrect = true;
             $(`#key_${theAnswer}`).css("background-color", "#538d4e");
             $("#guess").css("background-color", "#538d4e");
             if (!storedGuess) {
                 localStorage.setItem("streak", parseInt(streak) + 1 );
             }
         } else {
+            isCorrect = false;
             $("#guess").css("background-color", "#eb3d3d");
             localStorage.removeItem("streak");
         }
@@ -45,6 +48,23 @@ function ShowStats() {
 function PressKey(key) {
     $("#guess").val(key);
 } 
+
+function Share() {
+
+    let today = new Date();
+    let originalDate = new Date("02/03/2023");
+    var timediff = today.getTime() - originalDate.getTime();
+    var diff = Math.ceil( timediff / (1000 * 3600 * 24) );
+
+    if (isCorrect) {
+        navigator.clipboard.writeText(`Bitdle ${diff} 1/1 \n` + String.fromCodePoint(0x1F7E9));
+    } else {
+        navigator.clipboard.writeText(`Bitdle ${diff} 0/1 \n` + String.fromCharCode(0x1F7E5));
+    }
+
+    alert("Copied results to clipboard");
+
+}
 
 $(document).ready( function() {
 
