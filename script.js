@@ -59,7 +59,7 @@ function Share() {
     if (isCorrect) {
         navigator.clipboard.writeText(`Bitdle ${diff} 1/1 \n` + String.fromCodePoint(0x1F7E9));
     } else {
-        navigator.clipboard.writeText(`Bitdle ${diff} 0/1 \n` + String.fromCharCode(0x1F7E5));
+        navigator.clipboard.writeText(`Bitdle ${diff} 0/1 \n` + String.fromCodePoint(0x1F7E5));
     }
 
     alert("Copied results to clipboard");
